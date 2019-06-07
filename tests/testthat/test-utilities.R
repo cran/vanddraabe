@@ -4,6 +4,8 @@
 ## feb-02-2017 (exe) mostly complete
 ## feb-07-2017 (exe) alphabetized tests
 ## jul-25-2017 (exe) updated documentation
+## mar-11-2019 (exe) added suppressWarnings(RNGversion("3.5.0")) prior to set.seed()
+## jun-06-2019 (exe) updated results of output impacted by the change to sample() in 3.6.0
 ##
 ## Please direct all questions to Emilio Xavier Esposito, PhD
 ## exeResearch LLC, East Lansing, Michigan 48823 USA
@@ -11,7 +13,7 @@
 ## emilio AT exeResearch DOT com
 ## emilio DOT esposito AT gmail DOT com
 ##
-## Copyright (c) 2017, Emilio Xavier Esposito
+## Copyright (c) 2019, Emilio Xavier Esposito
 ##
 ## Permission is hereby granted, free of charge, to any person obtaining
 ## a copy of this software and associated documentation files (the
@@ -93,12 +95,12 @@ test_that("counting AtomTypes works", {
   set.seed(13)
   num.AtomTypes <- sample(1:10, 30, replace = TRUE)
   atom.types <- rep(sample(names.res.AtomTypes, 30), num.AtomTypes)
-  ATCounts.answer <- c(0,0,0,1,0,0,0,0,8,0,7,0,0,1,0,0,0,1,0,0,1,0,4,0,0,0,0,0,
-                       0,0,0,0,4,0,0,9,0,0,0,0,0,0,0,0,0,0,0,5,0,6,0,0,0,0,0,0,
-                       0,0,6,0,0,0,0,0,7,0,0,3,0,0,8,0,0,6,0,0,0,0,0,0,0,0,2,0,
-                       0,0,0,0,10,0,0,0,0,6,7,0,0,6,0,0,7,0,0,0,0,0,0,0,0,9,0,
-                       0,0,0,0,0,0,0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,
-                       4,0,0,0,6,0,0,0,0,0,9,0,4,0,0,0,0,0,7,0,0,0,0,0,0,0,0,0)
+  ATCounts.answer <- c(0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                       0,0,1,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,4,3,6,0,0,0,0,0,0,0,
+                       0,0,0,10,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,6,4,1,0,0,0,0,0,
+                       0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,7,0,0,0,0,0,0,
+                       0,7,0,3,0,0,5,3,0,5,0,0,5,8,0,8,0,8,0,0,0,0,0,0,2,0,0,1,
+                       0,0,0,3,0,0,6,0,0,0,0,0,3,0,0,0,0,10,0,0,0,0,0,0,1,0,0,0)
   expect_equal(getAtomTypeCounts(atom.types), ATCounts.answer)
 })
 
